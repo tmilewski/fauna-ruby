@@ -32,7 +32,7 @@ module Fauna
       @logger = params[:logger] || nil
       @domain = params[:domain] || "rest1.fauna.org"
       @scheme = params[:scheme] || "https"
-      @port = params[:port] || (@scheme == "https" ? 443 : 80)
+      @port = Integer(params[:port]) || (@scheme == "https" ? 443 : 80)
       @timeout = params[:timeout] || 60
       @connection_timeout = params[:connection_timeout] || 60
       @adapter = params[:adapter] || Faraday.default_adapter
